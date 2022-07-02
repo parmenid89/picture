@@ -15,7 +15,6 @@ const changeCalcState = (state) => {
                         state[prop] = elem.value;
                         break;
                 }
-
                 console.log(state);
             });
 

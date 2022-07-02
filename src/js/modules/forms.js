@@ -2,10 +2,11 @@ import {postData} from '../services/requests';
 
 /* jshint -W030 */
 /* jshint -W101 */
-const forms = (/* state */) => {
+const forms = (state) => {
     const form = document.querySelectorAll('form'),
           inputs = document.querySelectorAll('input'),
-          upload = document.querySelectorAll('[name="upload"]');
+          upload = document.querySelectorAll('[name="upload"]'),
+          select = document.querySelectorAll('select');
     
     const message = {
         loading: 'Загрузка...',
@@ -27,6 +28,9 @@ const forms = (/* state */) => {
         });
         upload.forEach(item => {
             item.previousElementSibling.textContent = "Файл не выбран";
+        });
+        select.forEach(item => {
+            item.selectedIndex = 0;
         });
     };
 
@@ -68,6 +72,11 @@ const forms = (/* state */) => {
             let api;
             item.closest('.popup-design') || item.classList.contains('calc_form') ? api = path.designer : api = path.question;
             console.log(api);
+            if (item.classList.contains('calc_form')) {
+                for (let key in state) {
+                    formData.append(key, state[key]);
+                }
+            }
 
             postData(api, formData)
                 .then(res => {
@@ -87,6 +96,11 @@ const forms = (/* state */) => {
                         item.classList.remove('fadeOutUp');
                         item.classList.add('fadeInUp');
                     }, 5000);
+                    for (let key in state) {
+                        delete state[key];
+                        state.form = 0;
+                        state.type = 'tree';
+                    }
                 });
         });
     });

@@ -1,4 +1,4 @@
-const calc = (size, material, options, promo, result) => {
+const calc = (size, material, options, promo, result, state) => {
     const sizeBlock = document.querySelector(size),
           materialBlock = document.querySelector(material),
           optionsBlock = document.querySelector(options),
@@ -14,8 +14,10 @@ const calc = (size, material, options, promo, result) => {
             resultBlock.textContent = 'Пожалуйста, выберите размер и материал картины';
         } else if (promocodeBlock.value === 'IWANTPOPART') {
             resultBlock.textContent = Math.round(sum * 0.7);
+            state.result = Math.round(sum * 0.7);
         } else {
             resultBlock.textContent = sum;
+            state.result = sum;
         }
 
     };
