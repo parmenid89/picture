@@ -7,7 +7,7 @@ import showMoreStiles from './modules/showMoreStiles';
 import calc from './modules/calc';
 import changeCalcState from './modules/changeCalcState';
 import filter from './modules/filter';
-
+import pictureSize from './modules/pictureSize';
 
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -27,5 +27,6 @@ window.addEventListener('DOMContentLoaded', () => {
     showMoreStiles('.button-styles', '#styles .row');
     calc('#size', '#material', '#options', '.promocode', '.calc-price', state);
     filter();
+    pictureSize('.sizes-block');
 });
 
