@@ -2,7 +2,7 @@ import {postData} from '../services/requests';
 
 /* jshint -W030 */
 /* jshint -W101 */
-const forms = () => {
+const forms = (/* state */) => {
     const form = document.querySelectorAll('form'),
           inputs = document.querySelectorAll('input'),
           upload = document.querySelectorAll('[name="upload"]');
